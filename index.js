@@ -2,8 +2,12 @@ const express = require('express')
 const multer = require('multer')
 const cors = require('cors')
 const upload = multer({dest:"uploads/"})
+
 const app = express()
 
+app.get('/', (req, res)=> {
+  res.send('hello nodejs')
+})
 app.options('/upload', cors())
 app.post('/upload', cors(), upload.single('file'), function (req, res) {
   res.json({
